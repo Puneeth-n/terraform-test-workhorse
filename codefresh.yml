@@ -22,7 +22,7 @@ steps:
     type: push
     candidate: '{{ build }}'
     tags:
-      - latest
+    - latest
     stage: push
     when:
       branch:
