@@ -20,8 +20,13 @@ steps:
   push:
     title: Push image to Docker Hub
     type: push
-    candidate: '{{ build }}'
-    tag: latest
+    candidate: '${{build}}'
+    image_name: puneethn/terraform-test-workhorse
+    tags:
+    - '0.12.25'
+    - latest
+    - ${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}
+    - ${{CF_SHORT_REVISION}}
     stage: push
     when:
       branch:
