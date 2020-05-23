@@ -1,0 +1,34 @@
+version: '1.0'
+steps:
+  clone:
+    title: Cloning repository
+    type: git-clone
+    repo: Puneeth-n/terraform-test-workhorse
+    revision: '${{CF_BRANCH}}'
+    git: github
+    stage: clone
+
+  build:
+    title: Building Docker image
+    type: build
+    image_name: puneethn/terraform-test-workhorse
+    working_directory: '${{clone}}'
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
+    dockerfile: Dockerfile
+    stage: build
+
+  push:
+    title: Push image to Docker Hub
+    type: push
+    candidate: {{ build }}
+    tags: [ 'latest', '${{ CF_BRANCH_TAG_NORMALIZED }}', '${{ CF_REVISION }}']
+    stage: push
+    when:
+      branch:
+        only:
+          - master
+
+stages:
+  - clone
+  - build
+  - push
