@@ -21,7 +21,10 @@ steps:
     title: Push image to Docker Hub
     type: push
     candidate: '{{ build }}'
-    tags: [ 'latest', '${{ CF_BRANCH_TAG_NORMALIZED }}', '${{ CF_REVISION }}']
+    tags:
+      - latest
+      - ${{ CF_BRANCH_TAG_NORMALIZED }}
+      - ${{ CF_REVISION }}
     stage: push
     when:
       branch:
