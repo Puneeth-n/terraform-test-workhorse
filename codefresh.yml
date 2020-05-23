@@ -23,8 +23,6 @@ steps:
     candidate: '{{ build }}'
     tags:
       - latest
-      - ${{CF_BRANCH_TAG_NORMALIZED}}
-      - ${{CF_REVISION}}
     stage: push
     when:
       branch:
