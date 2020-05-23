@@ -20,7 +20,7 @@ steps:
   push:
     title: Push image to Docker Hub
     type: push
-    candidate: '{{ build }}'
+    candidate: puneethn/terraform-test-workhorse
     tags:
     - latest
     stage: push
