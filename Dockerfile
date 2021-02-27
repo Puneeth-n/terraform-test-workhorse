@@ -5,7 +5,7 @@ RUN wget https://github.com/terraform-linters/tflint/releases/download/v0.19.1/t
 
 FROM golang:1.14
 
-COPY --from=hashicorp/terraform:0.12.29 /bin/terraform /bin/
+COPY --from=hashicorp/terraform:0.13.5 /bin/terraform /bin/
 COPY --from=cytopia/terraform-docs /usr/local/bin/terraform-docs /bin/
 COPY --from=tflint /usr/bin/tflint /bin/
 
