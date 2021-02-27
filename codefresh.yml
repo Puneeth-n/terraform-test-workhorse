@@ -23,7 +23,7 @@ steps:
     candidate: '${{build}}'
     image_name: puneethn/terraform-test-workhorse
     tags:
-    - '0.12.29'
+    - '0.13.5'
     - latest
     - ${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}
     - ${{CF_SHORT_REVISION}}
